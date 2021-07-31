@@ -19,17 +19,16 @@ def getcountry(ip):
 
 @app.route('/home', methods=['GET'])
 def banned():
-  f = os.popen("cat /var/log/fail2ban.log | grep Ban | awk '{print $7}'")
-  banned = f.read()
+  ips = os.popen("cat /etc/hosts.deny | awk '{ print $3 }'")
+  banned = ips.read()
 
 
-  theFile = open('/var/log/fail2ban.log','r')
+  theFile = open('/etc/hosts.deny','r')
   FILE = theFile.readlines()
   theFile.close()
   printList = []
   for line in FILE:
-    if ('Ban' in line):
-      printList.append(line)
+    printList.append(line)
   print(printList)
   cpu_load=psutil.cpu_percent()
   return render_template('index.html', printList = printList, getcountry=getcountry, cpu_load = cpu_load)

@@ -36,28 +36,31 @@
     <div class="starter-template">
       <table class="table">
       <tr>
-          <th><center>Date</center></th>
-          <th><center>Time</center></th>
           <th><center>Service</center></th>
           <th><center>IP Address</center></th>
           <th><center>Country</center></th>
       </tr>
-          {% for item in printList %}
-      
+
+      {% if printList is defined and printList|length > 0 %}
+        {% for item in printList %}
         <tr>
           <td>{{ item.split(" ")[0] }}</td>
-          <td>{{ item.split(" ")[1].split(",")[0] }}</td>
-          <td>{{ item.split(" ")[13] }}</td>
-          <td>{{ item.split(" ")[15] }}</td>
-          {% if getcountry(item.split(" ")[6].rstrip('\n'))['status'] == "success" %}
-          <td>{{ getcountry(item.split(" ")[6].rstrip('\n'))['country'] }}</td>
+          <td>{{ item.split(" ")[2] }}</td>
+          {% if getcountry(item.split(" ")[2].rstrip('\n'))['status'] == "success" %}
+          <td>{{ getcountry(item.split(" ")[2].rstrip('\n'))['country'] }}</td>
           {% else %}
-          <td>{{ getcountry(item.split(" ")[6].rstrip('\n'))['message'] }}</td>
+          <td>{{ getcountry(item.split(" ")[2].rstrip('\n'))['message'] }}</td>
           {% endif %}
         </tr>
-          
-      {% endfor %}
+        {% endfor %}
+      {% else %}
+      <tr>
+        <th colspan="3"><center>Try some ssh brute-force!</th>
+      </tr>
+      {% endif %}
+
       </table>
+
     </div>
 		
   </div>

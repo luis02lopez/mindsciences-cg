@@ -8,11 +8,11 @@ $ docker run --cap-add=NET_ADMIN -p 22:22 -p 5000:5000 mindsciences_challenge_lu
 
 ("NET_ADMIN" needed for docker firewall blocking)
 
-Try sshing at least 8 times in another terminal session to simulate the brute-force attack:
+Try sshing at least 3 times for a minute in another terminal session to simulate the brute-force attack:
 
 $ ssh 0.0.0.0
 
-Monitor and alarming of CPU load is running with cron.
+SSH protection, monitor and alarming of CPU load is running with cron.
 
 Monitor CPU and check list of banned IP's status page here: 
 
