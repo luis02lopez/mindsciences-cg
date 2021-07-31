@@ -18,3 +18,4 @@ Monitor CPU and check list of banned IP's status page here:
 
 Open http://0.0.0.0:5000 in your browser
 # mindsciences-cg
+# mindsciences-cg
